@@ -16,7 +16,6 @@ router.get('/add', function(req, res, next) {
 	res.render('addpage');
 });
 
-
 router.post('/', function(req, res, next) {
 
   // STUDENT ASSIGNMENT:
@@ -24,13 +23,18 @@ router.post('/', function(req, res, next) {
 
   var page = Page.build({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
   });
-
+  page.save()
+  .then((savedPage) => {
+    console.log("what we saved", savedPage)
+    res.json( {
+      message : 'Page Added',
+      page: savedPage
+    })
+  })
   // STUDENT ASSIGNMENT:
   // make sure we only redirect *after* our save is complete!
   // note: `.save` returns a promise or it can take a callback.
-  page.save();
   // -> after save -> res.redirect('/');
-  res.redirect('/')
 });
