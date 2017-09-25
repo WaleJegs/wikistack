@@ -38,3 +38,16 @@ router.post('/', function(req, res, next) {
   // note: `.save` returns a promise or it can take a callback.
   // -> after save -> res.redirect('/');
 });
+
+
+router.get('/:urlTitle', function(req, res, next){
+	Page.findOne({
+		where: {
+			urlTitle: req.params.urlTitle
+		}
+	})
+	.then((foundPage) => {
+		res.render('wikipage', {page: foundPage});
+	})
+	.catch(next);
+})

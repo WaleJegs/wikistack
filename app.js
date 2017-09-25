@@ -21,7 +21,7 @@ nunjucks.configure('views');
 models.db.sync({})
 .then(function () {
     // make sure to replace the name below with your express app
-    app.listen(3103, function () {
+    app.listen(3013, function () {
         console.log('Server is listening on port 3001!');
     });
 })
