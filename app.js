@@ -21,7 +21,7 @@ const app = express();
 models.db.sync({})
 .then(function () {
     // make sure to replace the name below with your express app
-    app.listen(3010, function () {
+    app.listen(3005, function () {
         console.log('Server is listening on port 3001!');
     });
 })
